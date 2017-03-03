@@ -1,13 +1,45 @@
-<html>
+<!doctype HTML>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="description" content="A Page for Morning Routine">
+  <title> Good Morning</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.css" rel="stylesheet"/>
 </head>
   <body>
-  Let's see if this line will actually show up
-      <div>
+  <h1 align="center">Good Morning, Ping! </h1><br> <p>I am happy to assist you today <br>
+  </p>
         <ul>
-          <li>Good Morning,Ping</li>
-          <li>I am happy to assist you today</li>
+          <li>Today is Thursday March 1, 2017 </li>
+          <li>Temperature:</li>
+          <li>Conditions:</li>
+          <li>What you should wear:</li>
+          <li>Daily motivation: </li>
         </ul>
-      </div>
+
+        <div id="weather"></div>
+
+        <script>
+        // Docs at http://simpleweatherjs.com
+        $(document).ready(function() {
+          $.simpleWeather({
+            location: 'Chicago, IL',
+            woeid: '',
+            unit: 'f',
+            success: function(weather) {
+              html = '<p>'+weather.temp+'&deg;'+weather.units.temp+'</p>';
+              html += '<ul><li>' + weather.currently + '</li></ul>';
+
+              $("#weather").html(html);
+            },
+            error: function(error) {
+              $("#weather").html('<p>'+error+'</p>');
+            }
+          });
+        });
+        </script>
+
     </body>
 </html>
