@@ -8,11 +8,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.css" rel="stylesheet"/>
 </head>
-</head>
   <body>
   <h1 align="center">Good Morning, Ping! </h1><br> <p>I am happy to assist you today <br>
   </p>
-      <div id="weather"> </div>
         <ul>
           <li>Today is Thursday March 1, 2017 </li>
           <li>Temperature:</li>
@@ -20,6 +18,8 @@
           <li>What you should wear:</li>
           <li>Daily motivation: </li>
         </ul>
+
+        <div id="weather"></div>
 
         <script>
         // Docs at http://simpleweatherjs.com
@@ -30,7 +30,7 @@
             unit: 'f',
             success: function(weather) {
               html = '<p>'+weather.temp+'&deg;'+weather.units.temp+'</p>';
-              html+= '<ul><li>' + weather.currently + '</li><ul>';
+              html += '<ul><li>' + weather.currently + '</li></ul>';
 
               $("#weather").html(html);
             },
