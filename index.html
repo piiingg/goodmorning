@@ -7,18 +7,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.css" rel="stylesheet"/>
-  <link rel="stylesheet" href=../style.css>
+  <link rel="stylesheet" href=../piiingg.github.io/style.css>
 </head>
   <body>
   <h1 align="center">Good Morning, Ping! </h1><br> <p>I am happy to assist you today <br>
   </p>
+
         <ul>
-          <li>Today is Thursday March 1, 2017 </li>
-          <li>Temperature:</li>
-          <li>Conditions:</li>
           <li>What you should wear:</li>
           <li>Daily motivation: </li>
         </ul>
+
+ <script type="text/Javascript">
+ //create a function to get date
+ function gimmedate(){
+   var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+   var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+   var d = new Date();
+  var printdate = "Today is "+ days[d.getDay()]+" "+ months[d.getMonth()]+" "+d.getDate()+" "+d.getFullYear();
+  return printdate;
+ }
+
+</script>
+  <script>document.write(gimmedate())</script>
 
         <div id="weather"></div>
 
@@ -28,10 +39,11 @@
           $.simpleWeather({
             location: 'Chicago, IL',
             woeid: '',
-            unit: 'f',
+            unit: 'c',
             success: function(weather) {
-              html = '<p>'+weather.temp+'&deg;'+weather.units.temp+'</p>';
-              html += '<ul><li>' + weather.currently + '</li></ul>';
+              html = '<p>Temperature: '+weather.temp+'&deg;'+weather.units.temp+'<p>';
+              html += '<p>Condition: ' + weather.currently + '<p>';
+              html += '<p>Last Updated: ' + weather.updated + '<p>';
 
               $("#weather").html(html);
             },
